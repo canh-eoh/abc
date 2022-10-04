@@ -1,7 +1,10 @@
-def my_function():
-    print('Hello word')
+import sys
+
+def my_function(a, b):
+    return int(a) + int(b)
 
 
 if __name__ == '__main__':
-    print('call my_function()')
-    my_function()
+    sys.argv
+    print('call my_function({})'.format(sys.argv))
+    my_function(sys.argv[1], sys.argv[2])
