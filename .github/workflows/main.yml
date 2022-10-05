@@ -37,5 +37,5 @@ jobs:
         uses: docker/build-push-action@v3
         with:
           push: true
-          tags: ${{ secrets.DOCKER_USERNAME }}/abc1
+          tags: ${{ secrets.DOCKER_USERNAME }}/${{ github.event.head_commit.timestamp }}
 
