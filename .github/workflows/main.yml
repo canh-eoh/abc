@@ -19,6 +19,8 @@ jobs:
     runs-on: ubuntu-latest
 
     # Steps represent a sequence of tasks that will be executed as part of the job
+    outputs:
+      version: ${{ steps.get_version.outputs.version }}
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - name: Check out
@@ -33,10 +35,17 @@ jobs:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_TOKEN }}
 
+      - name: Get version
+        id: get_version
+        run: |
+          VERSION=$(echo "${{ github.event.head_commit.timestamp }}" | cut -c2-)
+          echo $VERSION
+          export VERSION=$VERSION
+          echo "::set-output name=version::$VERSION"
+
       - name: Build and push
         uses: docker/build-push-action@v3
-        env:
-          VERSION: $(echo "${{ github.event.head_commit.timestamp }}" | cut -c2-)
+
         with:
           push: true
           tags: ${{ secrets.DOCKER_USERNAME }}/$VERSION
