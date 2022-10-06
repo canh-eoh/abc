@@ -62,6 +62,6 @@ jobs:
 
       - name: Command doctl
         run: |
-          doctl compute ssh ubuntu-s-4vcpu-8gb-amd-sgp1-01
+          doctl registry login
 
 
