@@ -59,6 +59,8 @@ jobs:
         uses: digitalocean/action-doctl@v2
         with:
           token: ${{ secrets.DIGITALOCEAN_ACCESS_TOKEN }}
+
+      - name: Command doctl
         run: |
           doctl compute ssh ubuntu-s-4vcpu-8gb-amd-sgp1-01
 
