@@ -48,7 +48,7 @@ jobs:
 
         with:
           push: true
-          tags: ${{ secrets.DOCKER_USERNAME }}/12-323-44
+          tags: ${{ secrets.DOCKER_USERNAME }}/${{ lowercase(steps.get_version.outputs.version) }}
   deploy:
     runs-on: ubuntu-latest
 
