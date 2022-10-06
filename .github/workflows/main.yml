@@ -38,7 +38,7 @@ jobs:
       - name: Get version
         id: get_version
         run: |
-          VERSION=$(echo "${{ github.event.head_commit.timestamp }}" | cut -c2-)
+          VERSION=$(echo "${{ github.event.head_commit.timestamp }}" | cut -c1-16)
           echo $VERSION
           export VERSION=$VERSION
           echo "::set-output name=version::$VERSION"
@@ -48,7 +48,7 @@ jobs:
 
         with:
           push: true
-          tags: ${{ secrets.DOCKER_USERNAME }}/$VERSION
+          tags: ${{ secrets.DOCKER_USERNAME }}/${{ env.VERSION }}
   deploy:
     runs-on: ubuntu-latest
 
