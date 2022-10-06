@@ -48,7 +48,7 @@ jobs:
 
         with:
           push: true
-          tags: ${{ secrets.DOCKER_USERNAME }}/canh243
+          tags: ${{ secrets.DOCKER_USERNAME }}/1232344
   deploy:
     runs-on: ubuntu-latest
 
