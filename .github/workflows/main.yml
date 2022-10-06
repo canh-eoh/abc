@@ -40,8 +40,8 @@ jobs:
         run: |
           VERSION=$(echo ${{ github.event.head_commit.timestamp }} | cut -c1-16)
           echo ${VERSION,,}
-          export VERSION=$VERSION
-          echo "::set-output name=version::$VERSION.ToLowerInvariant()"
+          export VERSION=${VERSION,,}
+          echo "::set-output name=version::${VERSION,,}"
 
       - name: Build and push
         uses: docker/build-push-action@v3
