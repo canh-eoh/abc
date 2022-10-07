@@ -74,9 +74,9 @@ jobs:
       - name: Command doctl
         run: |
           doctl registry login
-          docker build -t abc:latest -t abc:v1 .
-          docker tag abc:v1 registry.digitalocean.com/demoregistry/abc:v1
-          docker push registry.digitalocean.com/demoregistry/abc:v1
+          docker build -t abc:latest -t abc:${{ steps.get_version.outputs.version }} .
+          docker tag abc:${{ steps.get_version.outputs.version }} registry.digitalocean.com/demoregistry/abc:${{ steps.get_version.outputs.version }}
+          docker push registry.digitalocean.com/demoregistry/abc:${{ steps.get_version.outputs.version }}
 
 
 
