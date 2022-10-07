@@ -63,5 +63,8 @@ jobs:
       - name: Command doctl
         run: |
           doctl registry login
+          docker tag ${{ secrets.DOCKER_USERNAME }}/${{ steps.get_version.outputs.version }} registry.digitalocean.com/demoregistry/${{ secrets.DOCKER_USERNAME }}/${{ steps.get_version.outputs.version }}
+          docker push registry.digitalocean.com/demoregistry/${{ secrets.DOCKER_USERNAME }}/${{ steps.get_version.outputs.version }}
+
 
 
